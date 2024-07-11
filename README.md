@@ -8,9 +8,9 @@ Please download and unzip the RELED dataset.
 
 * [[RELED-Train](https://drive.google.com/file/d/1Syf_hhmyzXvHlhoMHQU4TSaEtXPkIT3U/view?usp=drive_link)] / [[RELED-Test](https://drive.google.com/file/d/1y-8cjnTHOyOz6jgy0T-gMcmiAnwdRf5R/view?usp=drive_link)]
 
-RELED dataset follows the below directory format:
+The dataset follows the below directory format:
 ```
-├──── YOUR_DIR/
+├──── RELED/
     ├──── train/
        ├──── 0000/
           ├──── blur_processed/
