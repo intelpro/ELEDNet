@@ -53,6 +53,7 @@ import numpy as np
 
 # Replace YOUR_EVENT_DIR with the path to the directory containing the .npz files for events
 event_data = np.load('YOUR_EVENT_DIR/*.npz')['data']
+```
 
 ## Contact
 If you have any question, please send an email to taewoo(intelpro@kaist.ac.kr)
