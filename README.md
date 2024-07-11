@@ -43,3 +43,14 @@ Sub-directory Descriptions:
 - **gt_processed**: Contains normal-light sharp images (`*.png` files).
 - **events**: Contains raw event data in `.npz` format.
 - **event_voxel**: Contains event voxel data in `.npz` format.
+
+Reading Raw Event Data (`events`):
+
+To read raw event data (`events`), use the following Python code:
+
+```
+import numpy as np
+
+# Replace YOUR_DIR with the path to the directory containing the .npz files
+events_data = np.load('YOUR_DIR/*.npz')['data']
+'''
