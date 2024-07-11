@@ -38,8 +38,8 @@ The dataset follows the below directory format:
     │   │   ├── ...
 ```
 
-#### Sub-directory Descriptions:
-- **blur_processed/**: Contains low-light blurred images (`*.png` files).
-- **gt_processed/**: Contains normal-light sharp images (`*.png` files).
-- **events/**: Contains raw event data in `.npz` format.
-- **event_voxel/**: Contains event voxel data in `.npz` format.
+Sub-directory Descriptions:
+- **blur_processed**: Contains low-light blurred images (`*.png` files).
+- **gt_processed**: Contains normal-light sharp images (`*.png` files).
+- **events**: Contains raw event data in `.npz` format.
+- **event_voxel**: Contains event voxel data in `.npz` format.
