@@ -4,4 +4,4 @@
 ### Downloading the RELED datasets 
 You can download the RELED dataset from this links
 
-* [[RELED-Train](https://drive.google.com/file/d/1Bsf9qreziPcVEuf0_v3kjdPUh27zsFXK/view?usp=drive_link)] / [[RELED-Test](https://drive.google.com/file/d/1Dk7jVQD29HqRVV11e8vxg5bDOh6KxrzL/view?usp=drive_link)]
+* [[RELED-Train](https://drive.google.com/file/d/1Syf_hhmyzXvHlhoMHQU4TSaEtXPkIT3U/view?usp=drive_link)] / [[RELED-Test](https://drive.google.com/file/d/1y-8cjnTHOyOz6jgy0T-gMcmiAnwdRf5R/view?usp=drive_link)]
