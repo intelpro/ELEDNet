@@ -53,4 +53,3 @@ import numpy as np
 
 # Replace YOUR_DIR with the path to the directory containing the .npz files
 events_data = np.load('YOUR_DIR/*.npz')['data']
-'''
