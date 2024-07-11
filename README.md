@@ -51,5 +51,7 @@ To read raw event data (`events`), use the following Python code:
 ```
 import numpy as np
 
-# Replace YOUR_DIR with the path to the directory containing the .npz files
-events_data = np.load('YOUR_DIR/*.npz')['data']
+# Replace YOUR_EVENT_DIR and YOUR_EVENT_VOXEL_DIR with the path to the directory containing the .npz files
+event_data = np.load('YOUR_EVENT_DIR/*.npz')['data']
+event_voxel = np.load('YOUR_EVENT_VOXEL_DIR/*.npz')['data']
+
