@@ -21,7 +21,7 @@ The dataset follows the below directory format:
              ├──── 00000.png
              ├──── ...
              └──── 000148.png
-          ├──── parsed_event/
+          ├──── parsed_events/
              ├──── 00000.npz
              ├──── ...
              └──── 00148.npz
