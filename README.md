@@ -10,32 +10,36 @@ Please download and unzip the RELED dataset.
 
 The dataset follows the below directory format:
 ```
-├──── RELED/
-    ├──── train/
-       ├──── 0000/
-          ├──── blur_processed/
-             ├──── 00000.png
-             ├──── ...
-             └──── 00148.png
-          ├──── gt_processed/
-             ├──── 00000.png
-             ├──── ...
-             └──── 000148.png
-          ├──── events/
-             ├──── 00000.npz
-             ├──── ...
-             └──── 00148.npz
-          ├──── event_voxel/
-             ├──── 00000.npz
-             ├──── ...
-             └──── 00148.npz
-       ├──── 0001 .../
-    ├──── test/
-       ├──── 0000 .../
+├── RELED/
+    ├── train/
+    │   ├── 0000/
+    │   │   ├── blur_processed/
+    │   │   │   ├── 00000.png
+    │   │   │   ├── ...
+    │   │   │   └── 00148.png
+    │   │   ├── gt_processed/
+    │   │   │   ├── 00000.png
+    │   │   │   ├── ...
+    │   │   │   └── 00148.png
+    │   │   ├── events/
+    │   │   │   ├── 00000.npz
+    │   │   │   ├── ...
+    │   │   │   └── 00148.npz
+    │   │   └── event_voxel/
+    │   │       ├── 00000.npz
+    │   │       ├── ...
+    │   │       └── 00148.npz
+    │   ├── 0001/
+    │   │   ├── ...
+    ├── test/
+    │   ├── 0000/
+    │   │   ├── ...
+    │   ├── 0001/
+    │   │   ├── ...
 ```
 
-Each subdirectory corresponding to blur_processed, gt_processed, parsed_event, and event_voxel represents the following:
-* blur_processed: low-light blurred image
-* gt_processed: normal-light sharp image
-* parsed_event: parsed event
-* event_voxel: event voxel
+### Sub-directory Descriptions:
+- **blur_processed/**: Contains low-light blurred images (`*.png` files).
+- **gt_processed/**: Contains normal-light sharp images (`*.png` files).
+- **events/**: Contains raw event data in `.npz` format.
+- **event_voxel/**: Contains event voxel data in `.npz` format.
