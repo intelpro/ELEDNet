@@ -11,8 +11,8 @@ Please download and unzip the RELED dataset.
 RELED dataset follows the below directory format:
 ```
 ├──── YOUR_DIR/
-    ├──── test/
-       ├──── 0001/
+    ├──── train/
+       ├──── 0000/
           ├──── blur_processed/
              ├──── 00000.png
              ├──── ...
@@ -29,7 +29,9 @@ RELED dataset follows the below directory format:
              ├──── 00000.npz
              ├──── ...
              └──── 00148.npz
-       ├──── .../
+       ├──── 0001 .../
+    ├──── test/
+       ├──── 0000 .../
 ```
 
 Each subdirectory corresponding to blur_processed, gt_processed, parsed_event, and event_voxel represents the following:
