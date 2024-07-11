@@ -44,14 +44,13 @@ Sub-directory Descriptions:
 - **events**: Contains raw event data in `.npz` format.
 - **event_voxel**: Contains event voxel data in `.npz` format.
 
-Reading Raw Event Data (`events`):
+Reading Raw Event Data (`events`) and Event Voxel Data(`event_voxel`):
 
-To read raw event data (`events`), use the following Python code:
+To read `event` and `event voxel` data from `.npz` files using Python and NumPy:
 
-```
+```python
 import numpy as np
 
-# Replace YOUR_EVENT_DIR and YOUR_EVENT_VOXEL_DIR with the path to the directory containing the .npz files
+# Replace YOUR_EVENT_DIR with the path to the directory containing the .npz files for events
 event_data = np.load('YOUR_EVENT_DIR/*.npz')['data']
-event_voxel = np.load('YOUR_EVENT_VOXEL_DIR/*.npz')['data']
 
