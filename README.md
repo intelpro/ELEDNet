@@ -38,7 +38,7 @@ The dataset follows the below directory format:
     │   │   ├── ...
 ```
 
-### Sub-directory Descriptions:
+#### Sub-directory Descriptions:
 - **blur_processed/**: Contains low-light blurred images (`*.png` files).
 - **gt_processed/**: Contains normal-light sharp images (`*.png` files).
 - **events/**: Contains raw event data in `.npz` format.
