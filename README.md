@@ -6,7 +6,7 @@ Currently, this pages only includes information about the dataset. I will soon b
 ## Downloading the RELED datasets 
 Please download and unzip the RELED dataset.
 
-* [[RELED-Train](https://drive.google.com/file/d/1Syf_hhmyzXvHlhoMHQU4TSaEtXPkIT3U/view?usp=drive_link)] / [[RELED-Test](https://drive.google.com/file/d/1y-8cjnTHOyOz6jgy0T-gMcmiAnwdRf5R/view?usp=drive_link)]
+* [[RELED-Train](https://drive.google.com/file/d/1SiUTEOm6ZrLgXnh2t1LeUqy0xDjiubH6/view?usp=drive_link)] / [[RELED-Test](https://drive.google.com/file/d/1y-8cjnTHOyOz6jgy0T-gMcmiAnwdRf5R/view?usp=drive_link)]
 
 The dataset follows the below directory format:
 ```
