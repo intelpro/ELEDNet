@@ -1,7 +1,7 @@
 # ELEDNet (ECCV 2024)
 
-Official repository for the ECCV 2024 paper, **"Towards Real-world Event-guided Low-light Video Enhancement and Deblurring."** **[[Paper](https://arxiv.org/abs/2408.14916)]**
-**[[Supp](https://drive.google.com/file/d/1xBy29Iy3ae7V0YTasPGBbE9Xf6fNUX3L/view?usp=sharing)]**
+Official repository for the ECCV 2024 paper, **"Towards Real-world Event-guided Low-light Video Enhancement and Deblurring."** *[[Paper](https://arxiv.org/abs/2408.14916)]*
+*[[Supp](https://drive.google.com/file/d/1xBy29Iy3ae7V0YTasPGBbE9Xf6fNUX3L/view?usp=sharing)]*
 
 
 Currently, this pages only includes information about the dataset and paper. I will soon be sharing more details on this pages.
