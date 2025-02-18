@@ -103,8 +103,21 @@ $ python train.py --data_dir ${DATSET_DIR}
 
 We plan to share test codes and pretrained model soon!
 
+## Reference  
+> Taewoo Kim, Jaeseok Jeong, Hoonhee Cho, Yuhwan Jeong, and Kuk-Jin Yoon, **"Towards Real-World Event-Guided Low-Light Video Enhancement and Deblurring,"** In *ECCV*, 2024.  
+```bibtex
+@inproceedings{kim2024towards,
+  title={Towards Real-World Event-Guided Low-Light Video Enhancement and Deblurring},
+  author={Kim, Taewoo and Jeong, Jaeseok and Cho, Hoonhee and Jeong, Yuhwan and Yoon, Kuk-Jin},
+  booktitle={Proceedings of the European Conference on Computer Vision (ECCV)},
+  pages={433--451},
+  year={2024},
+  publisher={Springer}
+}
+
 ## Contact
 If you have any question, please send an email to taewoo(an625148@gmail.com)
 
 ## License
 The project codes and datasets can be used for research and education only. 
+
