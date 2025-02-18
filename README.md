@@ -89,7 +89,6 @@ $ python utils/make_train_dataset --train_data_dir ${TRAIN_DATASET_DIR}
 ```
 
 - **`${TRAIN_DATASET_DIR}`**: Specifies the directory containing the **training dataset** of the **RELED dataset**.
-- Make sure to input the correct path to the processed training data.  
 - The process **divides the blur, event voxel, and ground truth (GT) data into four parts** to enhance training speed.  
 
 Once preprocessing is complete, you can proceed to the model training step.
