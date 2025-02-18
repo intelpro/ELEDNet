@@ -71,7 +71,7 @@ event_data = np.load('YOUR_EVENT_DIR/*.npz')['data']
 * CUDA 11.2
 * python 3.8
 
-## Quick start 
+## Quick train model 
 
 Download repository:
 
@@ -98,6 +98,10 @@ $ python train.py --data_dir ${DATSET_DIR}
 ```
 
 - **`--data_dir ${DATSET_DIR}`**: Specifies the directory containing the complete RELED dataset, including both training and test sets.
+
+## Test model 
+
+We plan to share test codes and pretrained model soon!
 
 ## Contact
 If you have any question, please send an email to taewoo(an625148@gmail.com)
