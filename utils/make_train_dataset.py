@@ -10,37 +10,39 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Low-light deblurring dataset parser")
     parser.add_argument("--train_data_dir", type=str, default = '/media/mnt2/dataset/RELED/train',
                         help="Path to the training dataset directory")
-    parser.add_argument("--parse", action="store_true", help="Enable parsed mode")
     args = parser.parse_args()
     # Prefix setting..
-    event_vox_prefix = 'event_voxel' + ('_parsed' if args.parse else '')
-    blur_prefix = 'blur_processed' + ('_parsed' if args.parse else '')
-    gt_prefix = 'gt_processed' + ('_parsed' if args.parse else '')
+    event_vox_prefix = 'event_voxel'
+    blur_prefix = 'blur_processed'
+    gt_prefix = 'gt_processed'
+    event_vox_parsed_prefix = 'event_voxel_parsed'
+    blur_parsed_prefix = 'blur_processed_parsed'
+    gt_parsed_prefix = 'gt_processed_parsed'
     print(f"Train data directory: {args.train_data_dir}")
     print(f"Event voxel directory: {event_vox_prefix}")
     print(f"Blur directory: {blur_prefix}")
     print(f"GT directory: {gt_prefix}")
     ## scene list
-    scene_list = os.listdir(train_data_dir)
+    scene_list = os.listdir(args.train_data_dir)
     scene_list.sort()
     for scene in scene_list:
         ## event vox
-        event_vox_dir = os.path.join(mode, scene, event_vox_prefix)
+        event_vox_dir = os.path.join(args.train_data_dir, scene, event_vox_prefix)
         event_vox_list = glob.glob(os.path.join(event_vox_dir, '*.npz'))
         ## blur
-        blur_dir = os.path.join(mode, scene, blur_prefix)
+        blur_dir = os.path.join(args.train_data_dir, scene, blur_prefix)
         blur_list = glob.glob(os.path.join(blur_dir, '*.png'))
         ## gt
-        gt_dir = os.path.join(mode, scene, gt_prefix)
+        gt_dir = os.path.join(args.train_data_dir, scene, gt_prefix)
         gt_list = glob.glob(os.path.join(gt_dir, '*.png'))
         event_vox_list.sort()
         blur_list.sort()
         gt_list.sort()
         num_data = len(event_vox_list)
         ## target dir
-        event_vox_parsed_dir = os.path.join(mode, scene, even_vox_parsed_prefix)
-        blur_parsed_dir = os.path.join(mode, scene, blur_parsed_prefix)
-        gt_parsed_dir = os.path.join(mode, scene, gt_parsed_prefix)
+        event_vox_parsed_dir = os.path.join(args.train_data_dir, scene, event_vox_parsed_prefix)
+        blur_parsed_dir = os.path.join(args.train_data_dir, scene, blur_parsed_prefix)
+        gt_parsed_dir = os.path.join(args.train_data_dir, scene, gt_parsed_prefix)
         if not os.path.exists(event_vox_parsed_dir):
             os.makedirs(event_vox_parsed_dir)
         if not os.path.exists(blur_parsed_dir):
