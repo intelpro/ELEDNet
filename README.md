@@ -66,6 +66,40 @@ import numpy as np
 event_data = np.load('YOUR_EVENT_DIR/*.npz')['data']
 ```
 
+## Requirements
+* PyTorch 1.8.0
+* CUDA 11.2
+* python 3.8
+
+## Quick start 
+
+Download repository:
+
+``` bash
+$ git clone https://github.com/intelpro/ELEDNet
+```
+
+
+If you want to start training our model, you need to preprocess the raw dataset first. 
+
+Run the following command to preprocess the dataset:  
+
+```bash
+$ python utils/make_train_dataset --train_data_dir ${TRAIN_DATASET_DIR} 
+```
+
+- **`--train_data_dir ${TRAIN_DATASET_DIR}`**: Specifies the directory containing the **training dataset** from the **RELED dataset**. Make sure to input the correct path to the processed training data.  
+- The process **divides the blur, event voxel, and ground truth (GT) data into four parts** to enhance training speed.  
+  - Reducing the size of each batch allows for **more efficient data loading**.
+
+Once preprocessing is complete, you can proceed to the model training step.
+
+```bash
+$ python train.py --data_dir ${DATSET_DIR}
+```
+
+- **`--data_dir ${DATSET_DIR}`**: Specifies the directory containing the complete RELED dataset, including both training and test sets.
+
 ## Contact
 If you have any question, please send an email to taewoo(intelpro@kaist.ac.kr)
 
