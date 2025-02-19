@@ -133,7 +133,7 @@ $ python test_model.py --data_dir RELED_PATH --resume_ckpt True --ckpt_dir PATH_
 
 ```
 
-- `--data_dir PATH_RELED` : Path to the RELED dataset for testing.  
+- `--data_dir PATH_RELED` : Path to the RELED dataset
 - `--resume_ckpt True` : Enables loading of a pretrained model checkpoint.  
 - `--ckpt_dir PATH_CKPT` : Path to the pretrained checkpoint file.  
 - `--saved_dir SAVED_DIR` : Directory where output images will be saved.  
