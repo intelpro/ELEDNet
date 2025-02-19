@@ -73,7 +73,7 @@ if __name__ == '__main__':
             blur_list.append(blur_image_tensor[None, ...])
         # Concatenate the tensors along the batch dimension and add extra dimension
         event_vox_tensor = torch.cat(event_vox_list)[None, ...]  # Shape: (1, num_frames, ...)
-        blur_input_clip = torch.cat(blur_list)[None, ...]  # Shape: (1, num_frames, C, H, W)
+        blur_input_clip = torch.cat(blur_list)[None, ...]  # Shape: (1, num_frames, ...)
         # Assign processed inputs to the sample dictionary
         sample['event_vox_clip'] = event_vox_tensor
         sample['blur_input_clip'] = blur_input_clip
