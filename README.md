@@ -6,8 +6,6 @@ Official repository for the ECCV 2024 paper, **"Towards Real-world Event-guided 
 [[Supp](https://drive.google.com/file/d/1xBy29Iy3ae7V0YTasPGBbE9Xf6fNUX3L/view?usp=sharing)] 
 
 
-Currently, this pages only includes information about the dataset and paper. I will soon be sharing more details on this pages.
-
 ## Video Demos
 ![ELEDNet Demo_1](https://github.com/intelpro/ELEDNet/blob/main/Figure/ELEDNet_demo1_v2.gif)
 ![ELEDNet Demo_2](https://github.com/intelpro/ELEDNet/blob/main/Figure/ELEDNet_demo2_v2.gif)
