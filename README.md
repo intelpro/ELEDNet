@@ -107,7 +107,7 @@ We plan to share test codes and pretrained model soon!
 > Taewoo Kim, Jaeseok Jeong, Hoonhee Cho, Yuhwan Jeong, and Kuk-Jin Yoon, **"Towards Real-World Event-Guided Low-Light Video Enhancement and Deblurring,"** In *ECCV*, 2024.  
 ```bibtex
 @inproceedings{kim2024towards,
-  title={Towards Real-World Event-Guided Low-Light Video Enhancement and Deblurring},
+  title={Towards Real-world Event-guided Low-light Video Enhancement and Deblurring},
   author={Kim, Taewoo and Jeong, Jaeseok and Cho, Hoonhee and Jeong, Yuhwan and Yoon, Kuk-Jin},
   booktitle={Proceedings of the European Conference on Computer Vision (ECCV)},
   pages={433--451},
