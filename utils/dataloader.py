@@ -11,7 +11,7 @@ from PIL import Image
 
 
 class Train_Video_Dataset(data.Dataset):
-    def __init__(self, args, data_path, mode, crop_size=256):
+    def __init__(self, args, data_path, crop_size=256):
         super(Train_Video_Dataset, self).__init__()
         ## 
         self.num_frames_seq = args.num_test_video_frames
@@ -104,9 +104,8 @@ class Train_Video_Dataset(data.Dataset):
 
 
 class Test_Video_Dataset(data.Dataset):
-    def __init__(self, args, data_path, mode, crop_size=256):
+    def __init__(self, args, data_path):
         super(Test_Video_Dataset, self).__init__()
-        ## 
         self.num_frames_seq = args.num_test_video_frames
         self.middle_frame_id = self.num_frames_seq//2
         ## image and event prefix
@@ -117,9 +116,6 @@ class Test_Video_Dataset(data.Dataset):
         self.transform = transforms.ToTensor()
         # data aug params
         self.get_filetaxnomy(data_path)
-        ## crop
-        self.crop_height = crop_size
-        self.crop_width = crop_size
     
     def get_filetaxnomy(self, data_dir):
         self.input_dict = {}
@@ -146,19 +142,20 @@ class Test_Video_Dataset(data.Dataset):
             ## event voxel
             left_event_vox = np.load(self.input_dict['event_voxel'][video_num_idx])["data"]
             left_event_vox_tensor = torch.from_numpy(left_event_vox)
-            event_vox_list.append(left_event_vox_tensor[None, ...])
+            ## images
             blur_image = Image.open(self.input_dict['blur_images'][video_num_idx])
             gt_image = Image.open(self.input_dict['sharp_images'][video_num_idx])
             blur_image_tensor = self.transform(blur_image)
             gt_image_tensor = self.transform(gt_image)
+            ## append to the list
+            event_vox_list.append(left_event_vox_tensor[None, ...])
             blur_list.append(blur_image_tensor[None, ...])
             gt_list.append(gt_image_tensor[None, ...])
         blur_input_clip = torch.cat(blur_list)
         gt_clip = torch.cat(gt_list)
         gt_clip_middle = gt_clip[self.middle_frame_id]
         event_vox_tensor = torch.cat(event_vox_list)
-        _, _, height, width =  gt_clip.shape
-        ### sample
+        ## prepare sample
         sample = {}
         sample['clean_gt_clip'] = gt_clip
         sample['clean_middle'] = gt_clip_middle
@@ -175,7 +172,7 @@ def get_train_dataset(args, mode):
     dataset_list = []
     for scene in scene_list:
         data_path = os.path.join(args.data_dir, mode, scene)
-        dset = Train_Video_Dataset(args, data_path, mode)
+        dset = Train_Video_Dataset(args, data_path)
         dataset_list.append(dset)
     dataset_train_concat = ConcatDataset(dataset_list)
     return dataset_train_concat
@@ -186,7 +183,7 @@ def get_test_dataset(args, mode):
     dataset_list = []
     for scene in scene_list:
         data_path = os.path.join(data_with_mode, scene)
-        dsets = Test_Video_Dataset(args, data_path, mode)
+        dsets = Test_Video_Dataset(args, data_path)
         dataset_list.append(dsets)
     dataset_test_concat = ConcatDataset(dataset_list)
     return dataset_test_concat
