@@ -65,9 +65,9 @@ event_data = np.load('YOUR_EVENT_DIR/*.npz')['data']
 ```
 
 ## Requirements
-* PyTorch 1.8.0
+* PyTorch 1.9
 * CUDA 11.2
-* python 3.8
+* python 3.7
 
 ## Quick Train model
 
