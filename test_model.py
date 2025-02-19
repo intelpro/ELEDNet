@@ -2,22 +2,18 @@ import torch
 import os
 import datetime
 import argparse
-from collections import OrderedDict
-from torch.optim import Adam
 from torch.utils.data import DataLoader
-from tensorboardX import SummaryWriter
-from tqdm import tqdm, trange
-from math import ceil
 from utils.utils import *
-from utils.dataloader import get_train_dataset, get_test_dataset
+from utils.dataloader import  get_test_dataset
 from models.model_manager import ModelManager
+from utils.eval_metrics import psnr_calculate, ssim_calculate
+from tqdm import tqdm
 
 
 def get_argument():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--val_batch_size', type = int, default=1)
+    parser.add_argument('--val_batch_size', type = int, default=4)
     # training params
-    parser.add_argument('--num_train_video_frames', type = int, default=3)
     parser.add_argument('--num_test_video_frames', type = int, default=3)
     parser.add_argument('--voxel_num_bins', type = int, default=16)
     parser.add_argument('--learning_rate', type = float, default=1e-4)
@@ -34,7 +30,6 @@ def get_argument():
     parser.add_argument('--ckpt_dir', type = str, required=True)
     args = parser.parse_args()
     return args
-
 
 class Tester:
     def __init__(self, args):
@@ -106,8 +101,11 @@ class Tester:
                 self.model.set_video_inputs(sample) 
                 self.model.forward_deblur_net() 
                 # Compute PSNR and SSIM metrics.
-                psnr_meter.update(self.PSNR_calculator(self.model.batch['clean_middle'], self.model.batch['output_deblur'][0]).mean().item())
-                ssim_meter.update(self.SSIM_calculator(self.model.batch['clean_middle'], self.model.batch['output_deblur'][0]).mean().item())
+                for batch_idx in range(args.val_batch_size):
+                    output_img = 255*self.model.batch['output_deblur'][0][batch_idx, ...].squeeze().detach().cpu().numpy().transpose(1,2,0)
+                    clean_middle = 255*self.model.batch['clean_middle'][batch_idx, ...].squeeze().detach().cpu().numpy().transpose(1,2,0)
+                    psnr_meter.update(psnr_calculate(output_img, clean_middle).mean().item())
+                    ssim_meter.update(ssim_calculate(output_img, clean_middle).mean().item())
 
         self.model.del_batch()
         self.logger.info(f'Total evaluation:  PSNR: {psnr_meter.avg}  SSIM: {ssim_meter.avg}')
