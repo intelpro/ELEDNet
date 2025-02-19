@@ -10,10 +10,8 @@ from PIL import Image
 
 def get_argument():
     parser = argparse.ArgumentParser()
-    # training params
-    parser.add_argument('--num_train_video_frames', type = int, default=3)
+    # params
     parser.add_argument('--num_test_video_frames', type = int, default=3)
-    parser.add_argument('--voxel_num_bins', type = int, default=16)
     parser.add_argument('--mode', type = str, default='test')
     # model discription
     parser.add_argument('--model_folder', type=str, default='model_factory')
