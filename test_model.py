@@ -6,7 +6,6 @@ from torch.utils.data import DataLoader
 from utils.utils import *
 from utils.dataloader import  get_test_dataset
 from models.model_manager import ModelManager
-from utils.eval_metrics import psnr_calculate, ssim_calculate
 from tqdm import tqdm
 
 
@@ -26,8 +25,9 @@ def get_argument():
     parser.add_argument('--num_threads', type = int, default=12)
     parser.add_argument('--data_dir', type = str, default = '/media/mnt2/dataset/RELED/')
     parser.add_argument('--use_multigpu', type=str2bool, default='True')
-    parser.add_argument('--resume_ckpt', type=str2bool, required=True)
-    parser.add_argument('--ckpt_dir', type = str, required=True)
+    parser.add_argument('--resume_ckpt', type=str2bool, default='True')
+    parser.add_argument('--ckpt_dir', type = str, default='./pretrained_model/Ours_RELED.pth')
+    parser.add_argument('--saved_dir', type = str, default='./saved_img')
     args = parser.parse_args()
     return args
 
@@ -50,21 +50,20 @@ class Tester:
         # Initialize the model.
         self.model = ModelManager(args)
         self.model.initilalize_deblur_model(args, model_folder=args.model_folder, model_name=args.model_name, tb_path=tb_path)
-        # Define evaluation metrics.
-        self.PSNR_calculator = PSNR()
-        self.SSIM_calculator = SSIM()
         # Load the checkpoint if resuming from a saved model.
         if args.resume_ckpt:
             ckpt = torch.load(args.ckpt_dir)['model_state_dict']
             # Remove "module." prefix if it exists (for models trained with DataParallel).
             new_ckpt = {k.replace("module.", "") if k.startswith("module.") else k: v for k, v in ckpt.items()}
+            # Save the modified checkpoint
             self.model.load_model(new_ckpt)
-        # Set up the logger.
-        self.logger = get_logger(tb_path, 'log.txt', 'append')
         # Configure device settings
         self._setup_device()
-        # Log the provided arguments for tracking.
-        self._log_arguments()
+        # save 
+        self.output_dir = os.path.join(args.saved_dir, 'output_img')
+        os.makedirs(self.output_dir, exist_ok=True)
+        self.gt_dir = os.path.join(args.saved_dir, 'gt_img')
+        os.makedirs(self.gt_dir, exist_ok=True)
 
     def _setup_device(self):
         """
@@ -77,14 +76,6 @@ class Tester:
         if self.args.use_multigpu:
             self.model.use_multi_gpu_deblur()
 
-    def _log_arguments(self):
-        """
-        Logs all the provided arguments and the total parameter count of the model.
-        """
-        self.logger.info(f'Overall parameter count: {self.model.count_total_parameters() * 1e-6:.4f} MB')
-        for arg, val in vars(self.args).items():
-            self.logger.info(f'{arg}: {val}')
-
     def test(self):
         """
         Performs testing on the dataset.
@@ -92,9 +83,9 @@ class Tester:
         - Computes PSNR and SSIM for each sample.
         - Logs the final evaluation results.
         """
-        psnr_meter, ssim_meter = AverageMeter(), AverageMeter()
         self.model.del_batch() 
-
+        # 
+        global_cnt = 0
         with torch.no_grad():  # Disable gradient calculations for testing.
             for sample in tqdm(self.test_loader, desc='Testing Progress'):
                 sample = batch2device(sample)  
@@ -104,11 +95,10 @@ class Tester:
                 for batch_idx in range(args.val_batch_size):
                     output_img = 255*self.model.batch['output_deblur'][0][batch_idx, ...].squeeze().detach().cpu().numpy().transpose(1,2,0)
                     clean_middle = 255*self.model.batch['clean_middle'][batch_idx, ...].squeeze().detach().cpu().numpy().transpose(1,2,0)
-                    psnr_meter.update(psnr_calculate(output_img, clean_middle).mean().item())
-                    ssim_meter.update(ssim_calculate(output_img, clean_middle).mean().item())
-
+                    cv2.imwrite(os.path.join(self.output_dir, str(global_cnt).zfill(5) + '.png'),  cv2.cvtColor(output_img, cv2.COLOR_RGB2BGR))
+                    cv2.imwrite(os.path.join(self.gt_dir, str(global_cnt).zfill(5) + '.png'), cv2.cvtColor(clean_middle, cv2.COLOR_RGB2BGR))
+                    global_cnt += 1
         self.model.del_batch()
-        self.logger.info(f'Total evaluation:  PSNR: {psnr_meter.avg}  SSIM: {ssim_meter.avg}')
         # Free up GPU memory.
         torch.cuda.empty_cache()
 

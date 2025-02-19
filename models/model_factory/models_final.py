@@ -1020,7 +1020,6 @@ class EventDeblurNet(nn.Module):
         # RNN cell
         self.shallow_cell_frames = shallow_cell(n_feat=base_feat)
         self.shallow_cell_events = shallow_cell_events(n_feat=base_feat)
-        self.conv_fusion = conv1x1(2*base_feat, base_feat)
         self.encoder_frame = Encoder(n_feat=base_feat, scale_unetfeats=scale_unet_feat)
         self.encoder_event = Encoder(n_feat=base_feat, scale_unetfeats=scale_unet_feat)
         # decoder

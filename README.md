@@ -107,7 +107,7 @@ $ git clone https://github.com/intelpro/ELEDNet
 
 Download network weights(trained on RELED datasets) and place downloaded model in ./pretrained_model
 
-* [[Ours](https://drive.google.com/file/d/1VixOqExExkulDx4RV7O15H4SCQN-iB9o/view?usp=sharing)]
+* [[Ours](https://drive.google.com/file/d/1sJiaIMOrt2Vs931FOjsx4oHROrEzNu2u/view?usp=sharing)]
 
 Generate output images using our model and sample data provided in this repository.
 

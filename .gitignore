@@ -1,7 +1,5 @@
-# Ignore the entire experiments folder
 experiments/
-# Ignore pretrained model files
 pretrained_model/
-# Ignore Python cache files
+saved_img/
 __pycache__/
 *.pyc
