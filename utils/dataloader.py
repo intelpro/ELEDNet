@@ -14,7 +14,7 @@ class Train_Video_Dataset(data.Dataset):
     def __init__(self, args, data_path, crop_size=256):
         super(Train_Video_Dataset, self).__init__()
         ## 
-        self.num_frames_seq = args.num_test_video_frames
+        self.num_frames_seq = args.num_train_video_frames
         self.middle_frame_id = self.num_frames_seq//2
         ## image and event prefix
         self.event_vox_prefix = 'event_voxel_parsed'

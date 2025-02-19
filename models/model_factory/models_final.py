@@ -772,8 +772,6 @@ class Transformer(nn.Module):
 class EDTFA(nn.Module):
     def __init__(self, in_channels=48):
         super(EDTFA, self).__init__()
-        num_blocks = [4,6,6,8] 
-        num_refinement_blocks = 4
         heads = [1,2,4,8]
         bias = False
         LayerNorm_type = 'WithBias'

@@ -73,6 +73,10 @@ class ModelManager(object):
         mask = mask.masked_fill_(mask > 0, 1)
         return output * mask
     
+    def set_test_inputs(self, sample):
+        self.batch['event_vox_clip'] = sample['event_vox_clip']
+        self.batch['blur_input_clip'] = sample['blur_input_clip']
+    
     def set_video_inputs(self, sample):
         self.batch['event_vox_clip'] = sample['event_vox_clip']
         self.batch['blur_input_clip'] = sample['blur_input_clip']

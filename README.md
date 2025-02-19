@@ -101,11 +101,21 @@ $ python train.py --data_dir ${DATSET_DIR}
 
 ## Quick Test model 
 
+Download repository:
+
+``` bash
+$ git clone https://github.com/intelpro/ELEDNet
+```
+
 Download network weights(trained on RELED datasets) and place downloaded model in ./pretrained_model
 
 * [[Ours](https://drive.google.com/file/d/1VixOqExExkulDx4RV7O15H4SCQN-iB9o/view?usp=sharing)]
 
-Generate output images using ours model:
+Generate output images using our model and sample data provided in this repository.
+
+``` bash
+python test_sample.py --resume_ckpt True --ckpt_dir ./pretrained_model/Ours_RELED.pth
+```
 
 
 ## Reference  
@@ -126,4 +136,3 @@ If you have any question, please send an email to taewoo(an625148@gmail.com)
 
 ## License
 The project codes and datasets can be used for research and education only. 
-
