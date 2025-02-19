@@ -83,19 +83,19 @@ If you want to start training our model, you need to preprocess the raw dataset 
 Run the following command to preprocess the dataset:  
 
 ```bash
-$ python utils/make_train_dataset --train_data_dir ${TRAIN_DATASET_DIR} 
+$ python utils/make_train_dataset --train_data_dir TRAIN_DATASET_DIR
 ```
 
-- **`${TRAIN_DATASET_DIR}`**: Specifies the directory containing the **training dataset** of the **RELED dataset**.
+- ``--train_data_dir TRAIN_DATASET_DIR``: Specifies the directory containing the **training dataset** of the **RELED dataset**.
 - The process **divides the blur, event voxel, and ground truth (GT) data into four parts** to enhance training speed.  
 
 Once preprocessing is complete, you can proceed to the model training step.
 
 ```bash
-$ python train.py --data_dir ${DATSET_DIR}
+$ python train.py --data_dir DATSET_DIR
 ```
 
-- **`${DATSET_DIR}`**: Specifies the directory containing the complete RELED dataset, including both training and test sets.
+- `--data_dir DATSET_DIR`: Specifies the directory containing the complete RELED dataset, including both training and test sets.
 
 ## Quick Test model 
 
@@ -105,15 +105,39 @@ Download repository:
 $ git clone https://github.com/intelpro/ELEDNet
 ```
 
-Download network weights(trained on RELED datasets) and place downloaded model in ./pretrained_model
+Download the network weights (trained on the RELED dataset) and place the downloaded model inside the `./pretrained_model` directory.  
 
-* [[Ours](https://drive.google.com/file/d/1sJiaIMOrt2Vs931FOjsx4oHROrEzNu2u/view?usp=sharing)]
+🔗 **[Download Ours Weights](https://drive.google.com/file/d/1sJiaIMOrt2Vs931FOjsx4oHROrEzNu2u/view?usp=sharing)**
+
+``` bash
+# Ensure the directory exists
+mkdir -p pretrained_model
+
+# Move the downloaded model to the correct location
+mv /path/to/downloaded/Ours_RELED.pth ./pretrained_model/
+```
 
 Generate output images using our model and sample data provided in this repository.
 
 ``` bash
 $ python test_sample.py --resume_ckpt True --ckpt_dir ./pretrained_model/Ours_RELED.pth
 ```
+
+## Test model
+
+If you want to test full RELED dataset, please generate output images using following command
+
+```bash
+
+$ python test_model.py --data_dir RELED_PATH --resume_ckpt True --ckpt_dir PATH_CKPT --saved_dir SAVED_DIR
+
+```
+
+- `--data_dir PATH_RELED` : Path to the RELED dataset for testing.  
+- `--resume_ckpt True` : Enables loading of a pretrained model checkpoint.  
+- `--ckpt_dir PATH_CKPT` : Path to the pretrained checkpoint file.  
+- `--saved_dir SAVED_DIR` : Directory where output images will be saved.  
+
 
 
 ## Reference  

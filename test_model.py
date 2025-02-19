@@ -23,8 +23,9 @@ def get_argument():
     # data loading params
     parser.add_argument('--experiment_name', type = str, default='test_networks')
     parser.add_argument('--num_threads', type = int, default=12)
-    parser.add_argument('--data_dir', type = str, default = '/media/mnt2/dataset/RELED/')
     parser.add_argument('--use_multigpu', type=str2bool, default='True')
+    ## required fileds
+    parser.add_argument('--data_dir', type = str, default = '/media/mnt2/dataset/RELED/')
     parser.add_argument('--resume_ckpt', type=str2bool, default='True')
     parser.add_argument('--ckpt_dir', type = str, default='./pretrained_model/Ours_RELED.pth')
     parser.add_argument('--saved_dir', type = str, default='./saved_img')
