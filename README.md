@@ -112,7 +112,7 @@ Download network weights(trained on RELED datasets) and place downloaded model i
 Generate output images using our model and sample data provided in this repository.
 
 ``` bash
-python test_sample.py --resume_ckpt True --ckpt_dir ./pretrained_model/Ours_RELED.pth
+$ python test_sample.py --resume_ckpt True --ckpt_dir ./pretrained_model/Ours_RELED.pth
 ```
 
 
