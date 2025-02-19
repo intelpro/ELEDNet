@@ -71,7 +71,7 @@ event_data = np.load('YOUR_EVENT_DIR/*.npz')['data']
 * CUDA 11.2
 * python 3.8
 
-## Quick train model 
+## Quick Train model
 
 Download repository:
 
@@ -99,12 +99,17 @@ $ python train.py --data_dir ${DATSET_DIR}
 
 - **`${DATSET_DIR}`**: Specifies the directory containing the complete RELED dataset, including both training and test sets.
 
-## Test model 
+## Quick Test model 
 
-We plan to share test codes and pretrained model soon!
+Download network weights(trained on RELED datasets) and place downloaded model in ./pretrained_model
+
+* [[Ours](https://drive.google.com/file/d/1VixOqExExkulDx4RV7O15H4SCQN-iB9o/view?usp=sharing)]
+
+Generate output images using ours model:
+
 
 ## Reference  
-> Taewoo Kim, Jaeseok Jeong, Hoonhee Cho, Yuhwan Jeong, and Kuk-Jin Yoon, **"Towards Real-World Event-Guided Low-Light Video Enhancement and Deblurring,"** In *ECCV*, 2024.  
+> Taewoo Kim, Jaeseok Jeong, Hoonhee Cho, Yuhwan Jeong, and Kuk-Jin Yoon, **"Towards Real-World Event-guided Low-Light Video Enhancement and Deblurring,"** In *ECCV*, 2024.  
 ```bibtex
 @inproceedings{kim2024towards,
   title={Towards Real-world Event-guided Low-light Video Enhancement and Deblurring},
